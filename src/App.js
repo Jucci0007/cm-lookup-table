@@ -3,7 +3,7 @@ import './App.css';
 
 function App() {
   return (
-    <div><GetEternal/></div>
+    <div class="container-fluid my-4"><GetEternal/></div>
   );
 }
 

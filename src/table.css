@@ -71,7 +71,17 @@ td  {
   font-weight: 700;
 }
 
+.text-left{
+  text-align: right;
+  font-family: 'Nunito', sans-serif;
+  font-weight: 700;
+}
 
+.text-center{
+  text-align: center;
+  font-family: 'Nunito', sans-serif;
+  font-weight: 700;
+}
 
 
 

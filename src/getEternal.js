@@ -79,6 +79,9 @@ class GetEternal extends Component{
     getVetContractCost(){
         return parseFloat(((7*this.state.workers)/this.state.eternalPrice)).toFixed(3)
     }
+    getVetRewardsVersusSuccess(i){
+        return parseFloat(this.getMineUSD(i)*7 * this.getMPvsSRforNET(i) / 100).toFixed(2)
+    }
     getMPvsSR(i){
         if (this.state.mp > 4899) {
             return '88%'
@@ -88,7 +91,7 @@ class GetEternal extends Component{
             const answer = parseFloat(this.state.success_chance[i] * 100 + divi).toFixed(0);
             if (answer > 88){
                 return '88%'
-            } else if ( answer < 50){
+            } else if (answer < 50 || this.state.mp < this.state.minepower[i]){
                 return 'Not Enough MP'
             } else {
                 return answer+'%'
@@ -246,7 +249,7 @@ class GetEternal extends Component{
                                                 <td class="border border-secondary text-primary">{this.getMineETL(i)} ETL</td>
                                                 <td class="border border-secondary">${this.getMineUSD(i)}</td>
                                                 <td class="border border-secondary text-secondary"><b>{this.getMPvsSR(i)}</b></td>
-                                                <td class="border border-secondary">${this.getRewardsVersusSuccess(i)}</td>
+                                                <td class="border border-secondary">${this.getVetRewardsVersusSuccess(i)}</td>
                                                 <td class="border border-secondary">{this.state.workers}</td>
                                                 <td class="border border-secondary text-primary">{this.getVetContractCost()} ETL</td>
                                                 <td class="border border-secondary">${this.getAdjustedNetProfit(i)}</td>
@@ -276,7 +279,7 @@ class GetEternal extends Component{
                                 <br/>
                                 Made by: Discord@Jucci#0007
                                 <br/>
-                                Want to help? Send us a message.
+                                Found bugs? Want to help? Send us a message.
                                 </p>
                             </div>
                         </div>

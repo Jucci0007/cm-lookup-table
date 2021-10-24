@@ -88,7 +88,7 @@ class GetEternal extends Component{
             const answer = parseFloat(this.state.success_chance[i] * 100 + divi).toFixed(0);
             if (answer > 88){
                 return '88%'
-            } else if ( answer < 49){
+            } else if ( answer < 50){
                 return 'Not Enough MP'
             } else {
                 return answer+'%'
@@ -107,7 +107,7 @@ class GetEternal extends Component{
             const answer = parseFloat(this.state.success_chance[i] * 100 + divi).toFixed(0);
             if (answer > 88){
                 return '88'
-            } else if ( answer < 49){
+            } else if ( answer < 50){
                 return 'Not Enough MP'
             } else {
                 return answer

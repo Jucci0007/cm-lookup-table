@@ -91,7 +91,7 @@ class GetEternal extends Component{
             } else if ( answer < 49){
                 return 'Not Enough MP'
             } else {
-                return answer
+                return answer+'%'
             }
         } else if (this.state.mp < 1500) {
             return this.getSuccessChance(i)+'%'

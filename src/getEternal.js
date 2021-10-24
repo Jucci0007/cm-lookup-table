@@ -81,13 +81,34 @@ class GetEternal extends Component{
     }
     getMPvsSR(i){
         if (this.state.mp > 4899) {
+            return '88%'
+        } else if (this.state.mp > 1499 && this.state.mp < 4900) {
+            const diff = this.state.mp - this.getMinePower(i);
+            const divi = Math.floor(diff/50);
+            const answer = parseFloat(this.state.success_chance[i] * 100 + divi).toFixed(0);
+            if (answer > 88){
+                return '88%'
+            } else if ( answer < 49){
+                return 'Not Enough MP'
+            } else {
+                return answer
+            }
+        } else if (this.state.mp < 1500) {
+            return this.getSuccessChance(i)+'%'
+        }
+    }
+    //Cloned MP vs SR to use for NetProfit Calculation
+    getMPvsSRforNET(i){
+        if (this.state.mp > 4899) {
             return 88
         } else if (this.state.mp > 1499 && this.state.mp < 4900) {
             const diff = this.state.mp - this.getMinePower(i);
             const divi = Math.floor(diff/50);
             const answer = parseFloat(this.state.success_chance[i] * 100 + divi).toFixed(0);
             if (answer > 88){
-                return 88
+                return '88'
+            } else if ( answer < 49){
+                return 'Not Enough MP'
             } else {
                 return answer
             }
@@ -95,8 +116,9 @@ class GetEternal extends Component{
             return this.getSuccessChance(i)
         }
     }
+
     getAdjustedNetProfit(i){
-        return parseFloat(((this.getMineUSD(i)*7) * (this.getMPvsSR(i)/100)) - (this.state.workers*7)).toFixed(2)
+        return parseFloat(((this.getMineUSD(i)*7) * (this.getMPvsSRforNET(i)/100)) - (this.state.workers*7)).toFixed(2)
     }
 
     setMP(event){
@@ -182,7 +204,7 @@ class GetEternal extends Component{
                                             <td class="border border-secondary purp">{this.getMinePower(i)}</td>
                                             <td class="border border-secondary gray">{parseFloat(this.state.oracle_adjustment[i]).toFixed(3)}</td>
                                             <td class="border border-secondary text-primary">{this.getMineETL(i)} ETL</td>
-                                            <td class="border border-secondary">$ {this.getMineUSD(i)}</td>
+                                            <td class="border border-secondary">${this.getMineUSD(i)}</td>
                                             <td class="border border-secondary text-secondary"><b>{this.getSuccessChance(i)}%</b></td>
                                             <td class="border border-secondary">${this.getRewardsVersusSuccess(i)}</td>
                                             <td class="border border-secondary">{this.state.worker_count[i]}</td>
@@ -222,8 +244,8 @@ class GetEternal extends Component{
                                                 <td class="border border-secondary purp">{this.getMinePower(i)}</td>
                                                 <td class="border border-secondary gray">{parseFloat(this.state.oracle_adjustment[i]).toFixed(3)}</td>
                                                 <td class="border border-secondary text-primary">{this.getMineETL(i)} ETL</td>
-                                                <td class="border border-secondary">$ {this.getMineUSD(i)}</td>
-                                                <td class="border border-secondary text-secondary"><b>{this.getMPvsSR(i)}%</b></td>
+                                                <td class="border border-secondary">${this.getMineUSD(i)}</td>
+                                                <td class="border border-secondary text-secondary"><b>{this.getMPvsSR(i)}</b></td>
                                                 <td class="border border-secondary">${this.getRewardsVersusSuccess(i)}</td>
                                                 <td class="border border-secondary">{this.state.workers}</td>
                                                 <td class="border border-secondary text-primary">{this.getVetContractCost()} ETL</td>

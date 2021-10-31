@@ -130,7 +130,7 @@ class GetEternal extends Component{
         return parseFloat(((this.getFleetMineUSD(i)*7) * (this.getFleetSuccessChance(i)/100)) - (this.state.workers*7) - (this.getFuel(i)*7) ).toFixed(2)
     }
     getFuel(i){
-        return parseFloat(this.getMineUSD(i) * 0.05).toFixed(2)
+        return parseFloat( (this.getMineUSD(i) * (this.state.rank_reward[this.state.fleet_level] / 1.205)) * 0.05).toFixed(2)
     }
 
     getFleetSuccessChance(i){

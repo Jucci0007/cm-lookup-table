@@ -568,13 +568,13 @@ class GetEternal extends Component{
                          
                             <div class="d-xs-block d-sm-none px-0 mx-0">
                                 <div class="row my-4">
-                                    <div class="col-4">
+                                    <div class="col-4 padding-right">
                                         <button type="button" class={this.state.btnHighlightCMInfo} onClick={this.btnFleetInfo}>CM Info</button>
                                     </div>
-                                    <div class="col-4">
+                                    <div class="col-4 padding-center">
                                         <button type="button" class={this.state.btnHighlightFleetRank} onClick={this.btnFleetRanks}>Fleet Ranks</button>
                                     </div>
-                                    <div class="col-4">
+                                    <div class="col-4 padding-left">
                                         <button type="button" class={this.state.btnHighlightFleetLevel} onClick={this.btnFleetLevels}>Fleet Levels</button>
                                     </div>
                                 </div>

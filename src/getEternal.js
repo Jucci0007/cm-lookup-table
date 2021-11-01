@@ -832,7 +832,7 @@ class GetEternal extends Component{
                             <table>
                                 <tr class="border border-dark">
                                     <th class="border border-2 border-dark">#</th>
-                                    <th class="border border-2 border-dark">Planet</th>
+                                    <th class="border extra-padding border-2 border-dark">Planet</th>
                                     <th class="border border-2 border-dark">MP</th>
                                     <th class="border border-2 border-dark">Oracle</th>
                                     <th class="border border-2 border-dark">Mine Reward (ETL)</th>

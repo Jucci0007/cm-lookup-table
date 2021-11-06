@@ -50,10 +50,10 @@ class GetEternal extends Component{
     }
 
     async loadData(){
-        const url = "https://api.coingecko.com/api/v3/simple/price?ids=cryptomines-eternal&vs_currencies=usd"
+        const url = "https://api.pancakeswap.info/api/v2/tokens/0xD44FD09d74cd13838F137B590497595d6b3FEeA4"
         const response = await fetch(url);
         const data = await response.json();
-        this.setState({eternalPrice: data["cryptomines-eternal"]["usd"]})
+        this.setState({eternalPrice: data["data"]["price"]})
     }
 
     async componentDidMount() {
@@ -511,7 +511,7 @@ class GetEternal extends Component{
 
                         <div class="d-none d-lg-block px-0 mx-0">
                             <div class="row d-flex sm-flex align-items-start border border-2 border-dark"> 
-                                <p class="col-4 getEternalHeader mt-3"> <b>USD/ETL</b> -{'>'} <span class="text-primary">{this.state.eternalPrice}</span></p>
+                                <p class="col-4 getEternalHeader mt-3"> <b>USD/ETL</b> -{'>'} <span class="text-primary">{parseFloat(this.state.eternalPrice).toFixed(2)}</span></p>
                                 <p class="col-4 getEternalHeader mt-3"> <b>Contract (7 Days) / Worker</b> -{'>'} <span class="text-primary">{parseFloat(7/this.state.eternalPrice).toFixed(3)} ETL</span> </p>
                                 <p class="col-4 getEternalHeader mt-3"> <b>Minting</b> -{'>'} <span class="text-primary">{parseFloat(20/this.state.eternalPrice).toFixed(3)} ETL</span> </p>
                             </div>
@@ -521,7 +521,7 @@ class GetEternal extends Component{
 
                         <div class="d-xs-block d-sm-none px-0 mx-0">
                             <div class="row d-flex sm-flex align-items-start border border-2 border-dark"> 
-                                <p class="col-4 getEternalHeaderM mt-3"> <b>USD/ETL</b>:<br/>  <span class="text-primary">{this.state.eternalPrice}</span></p>
+                                <p class="col-4 getEternalHeaderM mt-3"> <b>USD/ETL</b>:<br/>  <span class="text-primary">{parseFloat(this.state.eternalPrice).toFixed(2)}</span></p>
                                 <p class="col-4 getEternalHeaderM mt-3"> <b>Contract 7d: </b><br/> <span class="text-primary">{parseFloat(7/this.state.eternalPrice).toFixed(3)} ETL</span> </p>
                                 <p class="col-4 getEternalHeaderM mt-3"> <b>Minting</b>: <br/><span class="text-primary">{parseFloat(20/this.state.eternalPrice).toFixed(3)} ETL</span> </p>
                             </div>
@@ -963,7 +963,7 @@ class GetEternal extends Component{
                                     <br/>
                                     All values are approximation and should only be used as a template. 
                                     <br/>
-                                    ETL/USD updates are from Coingecko and updates every 2 seconds.
+                                    ETL/USD updates are from Pancakeswap.
                                     <br/>
                                     Mobile View Finally Available
                                     </p>
@@ -988,7 +988,7 @@ class GetEternal extends Component{
                                     <br/>
                                     All values are approximation and should only be used as a template. 
                                     <br/>
-                                    ETL/USD updates are from Coingecko and updates every 2 seconds.
+                                    ETL/USD updates are from Pancakeswap.
                                     <br/>
                                     Mobile View Finally Available
                                     </p>

@@ -123,6 +123,9 @@ class GetEternal extends Component{
         if (this.state.fleet_rank === ""){
             return 'Enter Fleet Rank'
         } 
+        else if (isNaN(parseFloat(this.getFleetMineUSD(i)*7 * this.getFleetSuccessChance(i) / 100).toFixed(2))) {
+            return 'Not Enough MP'
+        }
         else {
             return '$ '+parseFloat(this.getFleetMineUSD(i)*7 * this.getFleetSuccessChance(i) / 100).toFixed(2)
         }

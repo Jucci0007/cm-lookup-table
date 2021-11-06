@@ -120,7 +120,13 @@ class GetEternal extends Component{
     }
 
     getFleetSRvsUSD(i){
-        return parseFloat(this.getFleetMineUSD(i)*7 * this.getFleetSuccessChance(i) / 100).toFixed(2)
+        if (this.state.fleet_rank === ""){
+            return 'Enter Fleet Rank'
+        } 
+        else {
+            return '$ '+parseFloat(this.getFleetMineUSD(i)*7 * this.getFleetSuccessChance(i) / 100).toFixed(2)
+        }
+        
     }
 
     getFleetContractCost(){
@@ -128,10 +134,26 @@ class GetEternal extends Component{
     }
 
     getFleetNet(i){
-        return parseFloat(((this.getFleetMineUSD(i)*7) * (this.getFleetSuccessChance(i)/100)) - (this.state.workers*7) ).toFixed(2)
+        if (this.state.fleet_rank === ""){
+            return 'Enter Fleet Rank'
+        }
+        else if (isNaN(parseFloat(((this.getFleetMineUSD(i)*7) * (this.getFleetSuccessChance(i)/100)) - (this.state.workers*7) ).toFixed(2))){
+            return 'Not Enough MP'
+        } else {
+            return '$ '+parseFloat(((this.getFleetMineUSD(i)*7) * (this.getFleetSuccessChance(i)/100)) - (this.state.workers*7) ).toFixed(2)
+        }
     }
     getFleetNetFuel(i){
-        return parseFloat(((this.getFleetMineUSD(i)*7) * (this.getFleetSuccessChance(i)/100)) - (this.state.workers*7) - (this.getFuel(i)*7) ).toFixed(2)
+        if (this.state.fleet_rank === ""){
+            return 'Enter Fleet Rank'
+        }
+        else if (isNaN(parseFloat(((this.getFleetMineUSD(i)*7) * (this.getFleetSuccessChance(i)/100)) - (this.state.workers*7) - (this.getFuel(i)*7) ).toFixed(2))){
+            return 'Not Enough MP'
+        }
+        else {
+            return '$ '+parseFloat(((this.getFleetMineUSD(i)*7) * (this.getFleetSuccessChance(i)/100)) - (this.state.workers*7) - (this.getFuel(i)*7) ).toFixed(2)
+        }
+        
     }
     getFuel(i){
         return parseFloat( (this.getMineUSD(i) * (this.state.rank_reward[0]/1.205)) * 0.05).toFixed(2)
@@ -151,7 +173,10 @@ class GetEternal extends Component{
         }   
     }
     getFleetSuccessChanceM(i){
-        if (this.state.fleet_rank === "D" || this.state.fleet_rank === "d" ) {
+        if (this.state.fleet_rank === ""){
+            return 'Enter Fleet Rank'
+        }
+        else if (this.state.fleet_rank === "D" || this.state.fleet_rank === "d") {
             return this.getFleetDSRM(i)
         } else if (this.state.fleet_rank === "C" || this.state.fleet_rank === "c" ) {
             return this.getFleetCSRM(i)
@@ -184,11 +209,12 @@ class GetEternal extends Component{
                 return answer
             }
         } else if (this.state.mp < 1500) {
-            if (this.state.mp > 1499 && i === 0){
-                return 91
-            } else if (this.state.mp > 1499 && i === 1){
-                return 89
-            } else {
+            if (this.state.mp < 100){
+                return parseFloat(this.state.d_success_chance[i] * 100).toFixed(0)
+            } else if ((Math.floor(this.state.mp/100)*100) < this.state.minepower[i]){
+                return 'Not Enough MP'
+            }
+            else {
                 return parseFloat(this.state.d_success_chance[i] * 100).toFixed(0)
             }
         }
@@ -213,11 +239,12 @@ class GetEternal extends Component{
                 return answer+'%'
             }
         } else if (this.state.mp < 1500) {
-            if (this.state.mp > 1499 && i === 0){
-                return 91+'%'
-            } else if (this.state.mp > 1499 && i === 1){
-                return 89+'%'
-            } else {
+            if (this.state.mp < 100){
+                return parseFloat(this.state.d_success_chance[i] * 100).toFixed(0)+'%'
+            } else if ((Math.floor(this.state.mp/100)*100) < this.state.minepower[i]){
+                return 'Not Enough MP'
+            }
+            else {
                 return parseFloat(this.state.d_success_chance[i] * 100).toFixed(0)+'%'
             }
         }
@@ -243,11 +270,12 @@ class GetEternal extends Component{
                 return answer
             }
         } else if (this.state.mp < 1500) {
-            if (this.state.mp > 1499 && i === 0){
-                return 91
-            } else if (this.state.mp > 1499 && i === 1){
-                return 89
-            } else {
+            if (this.state.mp < 100){
+                return parseFloat(this.state.c_success_chance[i] * 100).toFixed(0)
+            } else if ((Math.floor(this.state.mp/100)*100) < this.state.minepower[i]){
+                return 'Not Enough MP'
+            }
+            else {
                 return parseFloat(this.state.c_success_chance[i] * 100).toFixed(0)
             }
         }
@@ -272,11 +300,12 @@ class GetEternal extends Component{
                 return answer+'%'
             }
         } else if (this.state.mp < 1500) {
-            if (this.state.mp > 1499 && i === 0){
-                return 91+'%'
-            } else if (this.state.mp > 1499 && i === 1){
-                return 89+'%'
-            } else {
+            if (this.state.mp < 100){
+                return parseFloat(this.state.c_success_chance[i] * 100).toFixed(0)+'%'
+            } else if ((Math.floor(this.state.mp/100)*100) < this.state.minepower[i]){
+                return 'Not Enough MP'
+            }
+            else {
                 return parseFloat(this.state.c_success_chance[i] * 100).toFixed(0)+'%'
             }
         }
@@ -303,11 +332,12 @@ class GetEternal extends Component{
             }
 
         } else if (this.state.mp < 1500) {
-            if (this.state.mp > 1499 && i === 0){
-                return 91
-            } else if (this.state.mp > 1499 && i === 1){
-                return 89
-            } else {
+            if (this.state.mp < 100){
+                return parseFloat(this.state.b_success_chance[i] * 100).toFixed(0)
+            } else if ((Math.floor(this.state.mp/100)*100) < this.state.minepower[i]){
+                return 'Not Enough MP'
+            }
+            else {
                 return parseFloat(this.state.b_success_chance[i] * 100).toFixed(0)
             }
         }
@@ -333,11 +363,12 @@ class GetEternal extends Component{
             }
 
         } else if (this.state.mp < 1500) {
-            if (this.state.mp > 1499 && i === 0){
-                return 91+'%'
-            } else if (this.state.mp > 1499 && i === 1){
-                return 89+'%'
-            } else {
+            if (this.state.mp < 100){
+                return parseFloat(this.state.b_success_chance[i] * 100).toFixed(0)+'%'
+            } else if ((Math.floor(this.state.mp/100)*100) < this.state.minepower[i]){
+                return 'Not Enough MP'
+            }
+            else {
                 return parseFloat(this.state.b_success_chance[i] * 100).toFixed(0)+'%'
             }
         }
@@ -367,11 +398,18 @@ class GetEternal extends Component{
             } else {
                 return answer
             }
-        } else if (this.state.mp < 1500) {
-            return parseFloat(this.state.a_success_chance[i] * 100).toFixed(0)
-        }
+        } 
+            else if (this.state.mp < 1500) {
+                if (this.state.mp < 100){
+                    return parseFloat(this.state.a_success_chance[i] * 100).toFixed(0)
+                } else if ((Math.floor(this.state.mp/100)*100) < this.state.minepower[i]){
+                    return 'Not Enough MP'
+                }
+                else {
+                    return parseFloat(this.state.a_success_chance[i] * 100).toFixed(0)
+                }
+            }
     }
-
     getFleetASRM(i){
         if (this.state.mp > 1499) {
             const diff = this.state.mp - this.getMinePower(i);
@@ -397,10 +435,16 @@ class GetEternal extends Component{
                 return answer+'%'
             }
         } else if (this.state.mp < 1500) {
-            return parseFloat(this.state.a_success_chance[i] * 100).toFixed(0)+'%'
+            if (this.state.mp < 100){
+                return parseFloat(this.state.a_success_chance[i] * 100).toFixed(0)+'%'
+            } else if ((Math.floor(this.state.mp/100)*100) < this.state.minepower[i]){
+                return 'Not Enough MP'
+            }
+            else {
+                return parseFloat(this.state.a_success_chance[i] * 100).toFixed(0)+'%'
+            }
         }
     }
-
     getFleetSSR(i){
         if (this.state.mp > 1499) {
             const diff = this.state.mp - this.getMinePower(i);
@@ -418,7 +462,14 @@ class GetEternal extends Component{
                 return answer
             }
         } else if (this.state.mp < 1500) {
-            return parseFloat(this.state.s_success_chance[i] * 100).toFixed(0)
+            if (this.state.mp < 100){
+                return parseFloat(this.state.s_success_chance[i] * 100).toFixed(0)
+            } else if ((Math.floor(this.state.mp/100)*100) < this.state.minepower[i]){
+                return 'Not Enough MP'
+            }
+            else {
+                return parseFloat(this.state.s_success_chance[i] * 100).toFixed(0)
+            }
         }
     }
     getFleetSSRM(i){
@@ -438,7 +489,14 @@ class GetEternal extends Component{
                 return answer+'%'
             }
         } else if (this.state.mp < 1500) {
-            return parseFloat(this.state.s_success_chance[i] * 100).toFixed(0)+'%'
+            if (this.state.mp < 100){
+                return parseFloat(this.state.s_success_chance[i] * 100).toFixed(0)+'%'
+            } else if ((Math.floor(this.state.mp/100)*100) < this.state.minepower[i]){
+                return 'Not Enough MP'
+            }
+            else {
+                return parseFloat(this.state.s_success_chance[i] * 100).toFixed(0)+'%'
+            }
         }
     }
 
@@ -516,7 +574,7 @@ class GetEternal extends Component{
                                         <p class="text-left">Fleet Rank:</p>
                                     </div>
                                     <div title="Fleet Ranks are: D, C, B, A, and S" class="col-2">
-                                        <input type="text" class="input-group-text" onChange={this.setFleetRank}></input>
+                                        <input type="text" class="input-group-text" maxlength="1" onChange={this.setFleetRank}></input>
                                     </div>
                                     <div title="Fleet Levels are 0 to 25, they increase rewards earned. Default is 11" class="col-2 pt-2">
                                         <p class="text-left">Fleet Level:</p>
@@ -569,7 +627,7 @@ class GetEternal extends Component{
                                         <p class="text-left-M">Fleet Rank:</p>
                                     </div>
                                     <div title="Fleet Ranks are: D, C, B, A, and S" class="col-8">
-                                        <input type="text" class="input-group-text" onChange={this.setFleetRank}></input>
+                                        <input type="text" class="input-group-text" maxlength="1" onChange={this.setFleetRank}></input>
                                     </div>
                                     <div class="col-12 my-1"><p class="text-small">Fleet Ranks are: D, C, B, A, and S</p></div>
                                     <div title="Fleet Levels are 0 to 25, they increase rewards earned. Default is 11" class="col-4 pt-2">
@@ -882,11 +940,11 @@ class GetEternal extends Component{
                                                 <td class="border border-secondary">${this.getFleetMineUSD(i)}</td>
                                                 <td class="border border-secondary">${this.getFuel(i)}</td>
                                                 <td class="border border-secondary text-secondary"><b>{this.getFleetSuccessChanceM(i)}</b></td>
-                                                <td class="border border-secondary">${this.getFleetSRvsUSD(i)}</td>
+                                                <td class="border border-secondary">{this.getFleetSRvsUSD(i)}</td>
                                                 <td class="border border-secondary">{this.state.workers}</td>
                                                 <td class="border border-secondary text-primary">{this.getFleetContractCost()} ETL</td>
-                                                <td class="border border-secondary">${this.getFleetNet(i)}</td>
-                                                <td class="border border-secondary">${this.getFleetNetFuel(i)}</td>
+                                                <td class="border border-secondary">{this.getFleetNet(i)}</td>
+                                                <td class="border border-secondary">{this.getFleetNetFuel(i)}</td>
                                             </tr>
                                         )
                                     }

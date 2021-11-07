@@ -548,7 +548,7 @@ class GetEternal extends Component{
                                     </div>
                                     <div class="col-7 row">
                                         <div class="col-12">
-                                            <p class={this.state.sheetInfo+" text-size-14"}>Fuel Values are estimates based on in game values (Planet 1 = 21Fuel), with some additional help from Dannii ❤#3151 and Memnoch#3381</p>
+                                            <p class={this.state.sheetInfo+" text-size-14"}>Fuel Values are from whitepaper, with some additional help from Dannii ❤#3151 and Memnoch#3381. New Oracle values also from Dannii ❤#3151</p>
                                         </div>
                                     </div>
                                 </div>
@@ -973,6 +973,8 @@ class GetEternal extends Component{
                                     <p class="credits text-info">
                                     Original Sheet and ORM Matrix by: Discord@starl3xx#2691
                                     <br/>
+                                    New ORM Matrix by: #Dannii ❤#3151
+                                    <br/>
                                     Found bugs? Want to help? DM me directly in Discord: Jucci#0007
                                     <br/>
                                     If you found this sheet helpful (copies on click): <button class="btn text-size-12 text-info px-0 mx-0 mb-0 py-0" onClick={() => {navigator.clipboard.writeText("0x1e206BD3B8253AEa904353f89bbE67f122Fbc149")}}>0x1e206BD3B8253AEa904353f89bbE67f122Fbc149</button> 
@@ -996,7 +998,9 @@ class GetEternal extends Component{
                                 </div>
                                 <div class="col-12">
                                     <p class="credits1 text-info">
-                                    Original Sheet and ORM Matrix by: Discord @ starl3xx#2691
+                                    Original Sheet and Original ORM Matrix by: Discord @ starl3xx#2691
+                                    <br/>
+                                    New ORM Matrix by: #Dannii ❤#3151
                                     <br/>
                                     Made by: Discord @ Jucci#0007
                                     <br/>

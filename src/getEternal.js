@@ -133,7 +133,7 @@ class GetEternal extends Component{
     }
 
     getFleetContractCost(){
-        return parseFloat(((7*this.state.workers)/this.state.eternalPrice)).toFixed(3)
+        return parseFloat(((7*this.state.workers)/this.state.eternalPrice)).toFixed(4)
     }
 
     getFleetNet(i){

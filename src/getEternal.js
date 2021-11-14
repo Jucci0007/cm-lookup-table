@@ -50,10 +50,10 @@ class GetEternal extends Component{
     }
 
     async loadData(){
-        const url = "https://api.pancakeswap.info/api/v2/tokens/0xD44FD09d74cd13838F137B590497595d6b3FEeA4"
+        const url = "https://api.coingecko.com/api/v3/simple/price?ids=cryptomines-eternal&vs_currencies=usd"
         const response = await fetch(url);
         const data = await response.json();
-        this.setState({eternalPrice: data["data"]["price"]})
+        this.setState({eternalPrice: data["cryptomines-eternal"]["usd"]})
     }
 
     async componentDidMount() {
@@ -161,6 +161,9 @@ class GetEternal extends Component{
     getFuel(i){
         return parseFloat((this.state.fuel[i]/100)).toFixed(2)
     }
+    // getFuel(i){
+    //     return parseFloat(this.getMineUSD(i) * this.state.rank_reward[7] * 0.05).toFixed(2)
+    // }
 
     getFleetSuccessChance(i){
         if (this.state.fleet_rank === "D" || this.state.fleet_rank === "d" ) {

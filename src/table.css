@@ -147,6 +147,10 @@ td  {
   font-size: 12px !important;
 }
 
+.text-size-25{
+  font-size: 25px !important;
+}
+
 .stretch{
   width: 100%;
   border-radius: 0.25rem;

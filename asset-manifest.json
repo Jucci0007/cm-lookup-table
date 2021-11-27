@@ -1,0 +1,25 @@
+{
+  "files": {
+    "main.css": "/cm-lookup-table/static/css/main.d913a318.chunk.css",
+    "main.js": "/cm-lookup-table/static/js/main.3926915e.chunk.js",
+    "main.js.map": "/cm-lookup-table/static/js/main.3926915e.chunk.js.map",
+    "runtime-main.js": "/cm-lookup-table/static/js/runtime-main.497e9b5e.js",
+    "runtime-main.js.map": "/cm-lookup-table/static/js/runtime-main.497e9b5e.js.map",
+    "static/css/2.c1256375.chunk.css": "/cm-lookup-table/static/css/2.c1256375.chunk.css",
+    "static/js/2.54f1840f.chunk.js": "/cm-lookup-table/static/js/2.54f1840f.chunk.js",
+    "static/js/2.54f1840f.chunk.js.map": "/cm-lookup-table/static/js/2.54f1840f.chunk.js.map",
+    "static/js/3.77bdbdf9.chunk.js": "/cm-lookup-table/static/js/3.77bdbdf9.chunk.js",
+    "static/js/3.77bdbdf9.chunk.js.map": "/cm-lookup-table/static/js/3.77bdbdf9.chunk.js.map",
+    "index.html": "/cm-lookup-table/index.html",
+    "static/css/2.c1256375.chunk.css.map": "/cm-lookup-table/static/css/2.c1256375.chunk.css.map",
+    "static/css/main.d913a318.chunk.css.map": "/cm-lookup-table/static/css/main.d913a318.chunk.css.map",
+    "static/js/2.54f1840f.chunk.js.LICENSE.txt": "/cm-lookup-table/static/js/2.54f1840f.chunk.js.LICENSE.txt"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.497e9b5e.js",
+    "static/css/2.c1256375.chunk.css",
+    "static/js/2.54f1840f.chunk.js",
+    "static/css/main.d913a318.chunk.css",
+    "static/js/main.3926915e.chunk.js"
+  ]
+}
